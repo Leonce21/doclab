@@ -1,0 +1,149 @@
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Single News section styles */
+  .news-single {
+    padding: 80px 0;
+  }
+  
+  /* News Head styles */
+  .news-head img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* News Title styles */
+  .news-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Meta styles */
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .meta-left, .meta-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .meta-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  /* News Text styles */
+  .news-text {
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  
+  /* Image Gallery styles */
+  .image-gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Blockquote styles */
+  blockquote {
+    background-color: #f8f8f8;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    margin: 20px 0;
+  }
+  
+  /* Blog Bottom styles */
+  .blog-bottom {
+    margin-top: 40px;
+  }
+  
+  /* Sidebar styles */
+  .main-sidebar {
+    margin-top: 40px;
+  }
+  
+  /* Single Widget styles */
+  .single-widget {
+    margin-bottom: 40px;
+  }
+  
+  /* Search Widget styles */
+  .single-widget.search input {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .single-widget.search .button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Recent Post Widget styles */
+  .single-post {
+    margin-bottom: 20px;
+  }
+  
+  .single-post .image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .single-post h5 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .single-post ul.comment {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+  
+  .single-post ul.comment li {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* Side Tags Widget styles */
+  .side-tags ul.tag {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .side-tags ul.tag li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .side-tags ul.tag a {
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .side-tags ul.tag a:hover {
+    background-color: #2980b9;
+  }
+  
