@@ -1362,3 +1362,23 @@ body.nav-active { overflow: hidden; }
   transform: scale(0.9);
   text-decoration: underline; /* Add underline on hover */
 }
+@media (max-width: 768px) {
+  .slider {
+    flex-direction: column; /* Stack cards vertically on small screens */
+  }
+
+  .slider .card {
+    margin-bottom: 20px;
+  }
+
+  .slider .card .img {
+    height: 300px; /* Adjust height for better visibility on small screens */
+  }
+}
+
+@media (max-width: 590px) {
+  .slider .card{
+    flex-basis: calc(50% - 20px); /* Stack cards vertically on small screens */
+  }
+
+}

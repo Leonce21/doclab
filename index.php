@@ -216,7 +216,7 @@
       <!-- 
         - #SERVICE
       -->
-
+<!-- 
       <section class="service" aria-label="service">
         <div class="container">
 
@@ -313,7 +313,7 @@
           </ul>
 
         </div>
-      </section>
+      </section> -->
 
 
 
@@ -576,7 +576,7 @@
             <li>
               <div class="blog-card has-before has-after" data-reveal="bottom">
 
-                <!-- <div class="meta-wrapper">
+                <div class="meta-wrapper">
 
                   <div class="card-meta">
                     <ion-icon name="person-outline"></ion-icon>
@@ -590,7 +590,7 @@
                     <span class="span">Specialist</span>
                   </div>
 
-                </div> -->
+                </div>
 
                 <h3 class="headline-sm card-title">Sickle Cell Anemia News</h3>
 
@@ -609,7 +609,7 @@
             <li>
               <div class="blog-card has-before has-after" data-reveal="bottom">
 
-                <!-- <div class="meta-wrapper">
+                <div class="meta-wrapper">
 
                   <div class="card-meta">
                     <ion-icon name="person-outline"></ion-icon>
@@ -623,7 +623,7 @@
                     <span class="span">Specialist</span>
                   </div>
 
-                </div> -->
+                </div>
 
                 <h3 class="headline-sm card-title">Sickle Cell Disease</h3>
 
@@ -649,7 +649,15 @@
 
 
   <!-- image card slider  -->
-  <div class="slider owl-carousel">
+    <div class="txt_img" style="position:relative; bottom:40px;">
+      <p class="section-subtitle title-lg text-center" id="blog-label" data-reveal="bottom">
+        
+      </p>
+
+      <h2 class="section-title headline-md text-center" data-reveal="bottom">Circle Cells Association</h2>
+    </div>
+    <div class="slider owl-carousel">
+      
       <div class="card">
         <div class="img"><img src="./assets/img/1.jpg" alt=""></div>
         <div class="content">

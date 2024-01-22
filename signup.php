@@ -29,233 +29,198 @@ if($msg) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+   <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <title>User Signup | Registration and Login System</title>
   <link href="./assets/css/login_register.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <script type="text/javascript">
-    function checkpass() {
-      if (
-        document.signup.password.value !=
-        document.signup.confirmpassword.value
-      ) {
-        alert(" Password and Confirm Password field does not match");
-        document.signup.confirmpassword.focus();
-        return false;
-      }
-      return true;
-    }
-  </script>
+<!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.png">
 </head>
 
 <body>
-<div class="wrapper">
-    <header>Login Form</header>
-    <form method="post" name="signup" onsubmit="return checkpass();">
+<!-- 
+    - #PRELOADER
+  -->
 
-      <div class="field fname">
-        <div class="input-area">
-          <input id="fname" name="fname" type="text" placeholder="Enter your first name" required>
-          <i class="icon fas fa-user"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
+  <div class="preloader" data-preloader>
+    <div class="circle"></div>
+  </div>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo2.svg" width="136" height="46" alt="SCE Gene home">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo2.svg" width="136" height="46" alt="SCE Gene home">
+          </a>
+
+          <button class="nav-close-btn" aria-label="clsoe menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
         </div>
-        <div class="error error-txt">Email can't be blank</div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Home</a>
+          </li>
+
+          <!-- <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Doctors</a>
+          </li> -->
+
+          <!-- <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Services</a>
+          </li> -->
+
+          <li class="navbar-item">
+            <a href="./pages/articles.html" class="navbar-link title-md">Articles</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link title-md">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <a href="./login.php" class="btn has-before title-md">Login</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+   <!-- 
+    - # End HEADER
+  -->
+
+  <div class="auth-content">
+    <form name="signup" onsubmit="return checkpass();" method="post">
+      <h2 class="form-title text-center">Register</h2>
+
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" id="fname" placeholder="John" class="text-input" required>
       </div>
 
-      <div class="field lname">
-        <div class="input-area">
-          <input id="lname" name="lname" type="text" placeholder="Enter your last name" required>
-          <i class="icon fas fa-user"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">last name can't be blank</div>
+      <div>
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" placeholder="Doe" class="text-input" required>
       </div>
 
-      <div class="field contact">
-        <div class="input-area">
-          <input id="contact" name="contact" type="text" placeholder="1234567890"
-            required pattern="[0-9]{10}" title="10 numeric characters only" maxlength="10" required>
-          <i class="icon fas fa-phone"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Contact can't be blank</div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="JohnDoe59@gmail.com" class="text-input" required>
       </div>
 
-      <div class="field email">
-        <div class="input-area">
-          <input placeholder="name@example.com" name="email" type="email" required>
-          <i class="icon fas fa-envelope"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Email can't be blank</div>
+      <div>
+        <label for="contact">Contact</label>
+        <input type="number" name="contact" id="contact" 
+        pattern="[0-9]{10}" 
+        title="10 numeric characters only"
+        placeholder="0099900045" 
+        class="text-input" required>
       </div>
 
-      <div class="field password">
-        <div class="input-area">
-          <input id="password" name="password" type="password"
-            placeholder="Create a password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-            title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
-            required>
-          <i class="icon fas fa-lock"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Password can't be blank</div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" 
+          name="password" id="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters" 
+          placeholder="xxx-xxx-xxx" 
+          class="text-input" required>
       </div>
 
-      <div class="field cnfmpassword">
-        <div class="input-area">
-          <input id="confirmpassword" name="confirmpassword" type="password"
-            placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-            title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
-            required>
-          <i class="icon fas fa-lock"></i>
-          <i class="error error-icon fas fa-exclamation-circle"></i>
-        </div>
-        <div class="error error-txt">Confirm Password can't be blank</div>
+      <div>
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="password" name="confirmpassword" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+          placeholder="xxx-xxx-xxx" 
+          class="text-input" required>
       </div>
 
-      <div class="pass-txt"><a href="password-recovery.php">Forgot password?</a></div>
-      <input type="submit" value="Submit" name="submit">
+      <div>
+        <button type="submit" class="btn btn-big" name="submit" value="submit" aria-label="register">Register</button>
+      </div>
+      <p class="text-center">Have an account? <a href="./login.html">Login</a></p>
 
     </form>
-    <div class="sign-txt">Have an account?<a href="login.php">Login now</a></div>
   </div>
-  <!-- <div id="layoutAuthentication">
-    <div id="layoutAuthentication_content">
-      <main>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-7">
-              <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-body">
-                  <form method="post" name="signup" onsubmit="return checkpass();">
-                    <div class="row mb-3">
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3 mb-md-0">
-                          <input class="form-control" id="fname" name="fname" type="text"
-                            placeholder="Enter your first name" required />
-                          <label for="inputFirstName">First name</label>
-                        </div>
-                      </div>
 
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input class="form-control" id="lname" name="lname" type="text"
-                            placeholder="Enter your last name" required />
-                          <label for="inputLastName">Last name</label>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="form-floating mb-3">
-                      <input class="form-control" id="email" name="email" type="email"
-                        placeholder="phpgurukulteam@gmail.com" required />
-                      <label for="inputEmail">Email address</label>
-                    </div>
 
-                    <div class="form-floating mb-3">
-                      <input class="form-control" id="contact" name="contact" type="text" placeholder="1234567890"
-                        required pattern="[0-9]{10}" title="10 numeric characters only" maxlength="10" required />
-                      <label for="inputcontact">Contact Number</label>
-                    </div>
 
-                    <div class="row mb-3">
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3 mb-md-0">
-                          <input class="form-control" id="password" name="password" type="password"
-                            placeholder="Create a password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                            title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
-                            required />
-                          <label for="inputPassword">Password</label>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="form-floating mb-3 mb-md-0">
-                          <input class="form-control" id="confirmpassword" name="confirmpassword" type="password"
-                            placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                            title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
-                            required />
-                          <label for="inputPasswordConfirm">Confirm Password</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mt-4 mb-0">
-                      <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-block" name="submit">
-                          Create Account
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="card-footer text-center py-3">
-                  <div class="small">
-                    <a href="login.php">Have an account? Go to login</a>
-                  </div>
-                  <div class="small">
-                    <a href="index.php">Back to Home</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div> -->
-
-  <script>
-    const form = document.querySelector("form");
-eField = form.querySelector(".email"),
-eInput = eField.querySelector("input"),
-pField = form.querySelector(".password"),
-pInput = pField.querySelector("input");
-
-form.onsubmit = (e)=>{
-  e.preventDefault(); //preventing from form submitting
-  //if email and password is blank then add shake class in it else call specified function
-  (eInput.value == "") ? eField.classList.add("shake", "error") : checkEmail();
-  (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
-
-  setTimeout(()=>{ //remove shake class after 500ms
-    eField.classList.remove("shake");
-    pField.classList.remove("shake");
-  }, 500);
-
-  eInput.onkeyup = ()=>{checkEmail();} //calling checkEmail function on email input keyup
-  pInput.onkeyup = ()=>{checkPass();} //calling checkPassword function on pass input keyup
-
-  function checkEmail(){ //checkEmail function
-    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //pattern for validate email
-    if(!eInput.value.match(pattern)){ //if pattern not matched then add error and remove valid class
-      eField.classList.add("error");
-      eField.classList.remove("valid");
-      let errorTxt = eField.querySelector(".error-txt");
-      //if email value is not empty then show please enter valid email else show Email can't be blank
-      (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address" : errorTxt.innerText = "Email can't be blank";
-    }else{ //if pattern matched then remove error and add valid class
-      eField.classList.remove("error");
-      eField.classList.add("valid");
-    }
-  }
-
-  function checkPass(){ //checkPass function
-    if(pInput.value == ""){ //if pass is empty then add error and remove valid class
-      pField.classList.add("error");
-      pField.classList.remove("valid");
-    }else{ //if pass is empty then remove error and add valid class
-      pField.classList.remove("error");
-      pField.classList.add("valid");
-    }
-  }
-
-  //if eField and pField doesn't contains error class that mean user filled details properly
-  if(!eField.classList.contains("error") && !pField.classList.contains("error")){
-    window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
-  }
-}
-  </script>
+   <!-- 
+    - custom js link
+  -->
+  <!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./assets/js/script.js"></script>
+   <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
