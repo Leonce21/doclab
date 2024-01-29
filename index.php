@@ -9,7 +9,7 @@
   <!-- 
     - primary meta tags
   -->
-  <title>SCE Gene - home</title>
+  <title>SCA Gene - Home</title>
   <meta name="title" content="Doclab - home">
   <meta name="description" content="This is a madical html template made by BTLeonce">
 
@@ -84,23 +84,19 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Home</a>
-          </li>
-
-          <!-- <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Doctors</a>
-          </li> -->
-
-          <!-- <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Services</a>
-          </li> -->
-
-          <li class="navbar-item">
-            <a href="./pages/articles.html" class="navbar-link title-md">Articles</a>
+            <a href="./index.php" class="navbar-link title-md">Home</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Contact</a>
+            <a href="./pages/articles.php" class="navbar-link title-md">Articles</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="./pages/gallery.php" class="navbar-link title-md">ACR/CCA Gallery</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="./pages/contact.php" class="navbar-link title-md">Contact</a>
           </li>
 
         </ul>
@@ -168,7 +164,7 @@
 
           <div class="hero-content">
 
-            <p class="hero-subtitle has-before" data-reveal="left">Welcome To SCE Gene</p>
+            <p class="hero-subtitle has-before" data-reveal="left">Welcome To SCA Gene</p>
 
             <h1 class="headline-lg hero-title" data-reveal="left">
               Our Sickle Cell Awareness<br>
@@ -211,114 +207,6 @@
 
 
 
-
-
-      <!-- 
-        - #SERVICE
-      -->
-<!-- 
-      <section class="service" aria-label="service">
-        <div class="container">
-
-          <ul class="service-list">
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-1.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <p>Psychiatry</p>
-                </h3>
-
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
-                </p>
-
-                <button class="btn-circle" aria-label="read more about psychiatry">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-2.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="#">Gynecology</a>
-                </h3>
-
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
-                </p>
-
-                <button class="btn-circle" aria-label="read more about Gynecology">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-3.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="#">Pulmonology</a>
-                </h3>
-
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
-                </p>
-
-                <button class="btn-circle" aria-label="read more about Pulmonology">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-4.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="#">Orthopedics</a>
-                </h3>
-
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
-                </p>
-
-                <button class="btn-circle" aria-label="read more about Orthopedics">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section> -->
-
-
-
-
-
       <!-- 
         - #ABOUT
       -->
@@ -337,21 +225,6 @@
               We provide insights into treatment options, ongoing research, and lifestyle management strategies.
             </p>
 
-            <!-- <ul class="tab-list" data-reveal="left">
-
-              <li>
-                <button class="tab-btn active">Vision</button>
-              </li>
-
-              <li>
-                <button class="tab-btn">Mission</button>
-              </li>
-
-              <li>
-                <button class="tab-btn">Strategy</button>
-              </li>
-
-            </ul> -->
 
             <p class="tab-text" data-reveal="left">
               Practical resources, such as support networks, treatment centers, and latest advancements, are also featured, 
@@ -499,21 +372,6 @@
               </div>
             </li>
 
-            <!-- <li>
-              <div class="listing-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-7.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <div>
-                  <h3 class="headline-sm card-title">Osteology</h3>
-
-                  <p class="card-text">Nisi nullam</p>
-                </div>
-
-              </div>
-            </li> -->
 
           </ul>
 
@@ -542,22 +400,7 @@
             <li>
               <div class="blog-card has-before has-after" data-reveal="bottom">
 
-                <!-- <div class="meta-wrapper">
-
-                  <div class="card-meta">
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <span class="span">By Admin</span>
-                  </div>
-
-                  <div class="card-meta">
-                    <ion-icon name="folder-outline"></ion-icon>
-
-                    <span class="span">Specialist</span>
-                  </div>
-
-                </div> -->
-
+               
                 <h3 class="headline-sm card-title">Advances in the research of sickle cell disease</h3>
 
                 <time class="title-sm date" datetime="2022-01-28">December, 2022</time>
@@ -576,21 +419,7 @@
             <li>
               <div class="blog-card has-before has-after" data-reveal="bottom">
 
-                <div class="meta-wrapper">
 
-                  <div class="card-meta">
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <span class="span">By Admin</span>
-                  </div>
-
-                  <div class="card-meta">
-                    <ion-icon name="folder-outline"></ion-icon>
-
-                    <span class="span">Specialist</span>
-                  </div>
-
-                </div>
 
                 <h3 class="headline-sm card-title">Sickle Cell Anemia News</h3>
 
@@ -609,21 +438,7 @@
             <li>
               <div class="blog-card has-before has-after" data-reveal="bottom">
 
-                <div class="meta-wrapper">
-
-                  <div class="card-meta">
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <span class="span">By Admin</span>
-                  </div>
-
-                  <div class="card-meta">
-                    <ion-icon name="folder-outline"></ion-icon>
-
-                    <span class="span">Specialist</span>
-                  </div>
-
-                </div>
+            
 
                 <h3 class="headline-sm card-title">Sickle Cell Disease</h3>
 
@@ -641,7 +456,7 @@
           </ul>
 
         </div>
-        <a href="./pages/articles.html" class="btn has-before title-md" style="margin: 0 auto;top:25px;position;relative;width:150px">View More</a>
+        <a href="./pages/articles.php" class="btn has-before title-md" style="margin: 0 auto;top:25px;position;relative;width:150px">View More</a>
       </section>
 
     </article>
@@ -659,38 +474,58 @@
     <div class="slider owl-carousel">
       
       <div class="card">
-        <div class="img"><img src="./assets/img/1.jpg" alt=""></div>
+        <div class="img"><img src="./assets/img/8.jpg" alt="" ></div>
         <div class="content">
-          <div class="title">Briana Tozour</div>
-          <div class="sub-title">Graphic Designer</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+          <!-- <div class="title">Briana Tozour</div> -->
+          <!-- <div class="sub-title">Christmas tree 2019</div> -->
+          <p>Les activités de l'association au Cameroun.</p>
           
         </div>
       </div>
       <div class="card">
         <div class="img"><img src="./assets/img/2.jpg" alt=""></div>
         <div class="content">
-          <div class="title">Pricilla Preez</div>
-          <div class="sub-title">Web Developer</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+          <!-- <div class="title">Pricilla Preez</div> -->
+          <!-- <div class="sub-title">Web Developer</div> -->
+          <p>Raising awareness in the collection zones and distribution of clothes to children.
+            Awareness in the Removed Areas and Donations.</p>
           
         </div>
       </div>
       <div class="card">
         <div class="img"><img src="./assets/img/3.jpg" alt=""></div>
         <div class="content">
-          <div class="title">Eliana Maia</div>
-          <div class="sub-title">App Developer</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+          <!-- <div class="title">Eliana Maia</div>
+          <div class="sub-title">App Developer</div> -->
+          <p>Visite aux enfants hospitalisés.</p>
+          
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="img"><img src="./assets/img/5.jpg" alt=""></div>
+        <div class="content">
+          <!-- <div class="title">Eliana Maia</div>
+          <div class="sub-title">App Developer</div> -->
+          <p>Raising awareness in the collection zones and distribution of clothes to children.</p>
           
         </div>
       </div>
       <div class="card">
-        <div class="img"><img src="./assets/img/4.jpg" alt=""></div>
+        <div class="img"><img src="./assets/img/6.jpg" alt=""></div>
         <div class="content">
-          <div class="title">Eliana Maia</div>
-          <div class="sub-title">App Developer</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+          <!-- <div class="title">Eliana Maia</div>
+          <div class="sub-title">App Developer</div> -->
+          <p>Les activités de l'association au Cameroun</p>
+          
+        </div>
+      </div>
+      <div class="card">
+        <div class="img"><img src="./assets/img/7.jpg" alt=""></div>
+        <div class="content">
+          <!-- <div class="title">Eliana Maia</div>
+          <div class="sub-title">App Developer</div> -->
+          <p>Journée internationale de la drépanocytose 29 juin 2020 Yaoundé/ Cameroun</p>
           
         </div>
       </div>
@@ -786,25 +621,19 @@
             <a href="#" class="text footer-link">Conditions</a>
           </li>
 
+            
           <li>
-            <a href="#" class="text footer-link">Listing</a>
+              <a href="#" class="text footer-link">Listing</a>
           </li>
 
           <li>
-            <a href="#" class="text footer-link">How It Works</a>
+              <a href="#" class="text footer-link">How It Works</a>
           </li>
 
           <li>
-            <a href="#" class="text footer-link">What We Offer</a>
+              <a href="#" class="text footer-link">What We Offer</a>
           </li>
 
-          <li>
-            <a href="#" class="text footer-link">Latest News</a>
-          </li>
-
-          <li>
-            <a href="#" class="text footer-link">Contact Us</a>
-          </li>
 
         </ul>
 
@@ -819,24 +648,12 @@
           </li>
 
           <li>
-            <a href="./pages/Faqs.html" class="text footer-link">FAQS</a>
+            <a href="./pages/Faqs.php" class="text footer-link">FAQS</a>
           </li>
 
           <li>
-            <a href="#" class="text footer-link">Our Services</a>
+            <a href="#" class="text footer-link">Circle Cells Association gallery</a>
           </li>
-
-          <!-- <li>
-            <a href="#" class="text footer-link">Join as a Doctor</a>
-          </li>
-
-          <li>
-            <a href="#" class="text footer-link">New Guests List</a>
-          </li>
-
-          <li>
-            <a href="#" class="text footer-link">The Team List</a>
-          </li> -->
 
         </ul>
 
@@ -861,7 +678,7 @@
       <div class="footer-bottom">
 
         <p class="text copyright">
-          &copy; SCE Gene 2024 | All Rights Reserved by BTLeonce
+          &copy; SCA Gen 2024 | All Rights Reserved
         </p>
 
         <ul class="social-list">

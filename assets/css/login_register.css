@@ -26,7 +26,22 @@
   color: #00adb3;
   line-height: 1.4rem;
 }
+.auth-content form div .password-container {
+  position: relative;
+}
 
+.auth-content form div .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.auth-content form div .password-toggle ion-icon {
+  font-size: 20px;
+  color: #333; /* Adjust the color as needed */
+}
 .auth-content form p a{
   text-decoration: underline;
 }
@@ -36,4 +51,22 @@
   padding: 5px;
   display: block;
   width: 100%;
+}
+
+@media only screen and (max-width:987px) {
+  .auth-content{
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width:618px){
+  .auth-content{
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width:420px){
+  .auth-content{
+    width: 70%;
+  }
 }

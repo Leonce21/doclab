@@ -1,25 +1,54 @@
-<?php session_start();
+<?php
+// session_start();
 require_once('includes/config.php');
+$message = '';
+// Code for Registration
+if (isset($_POST['submit'])) {
+    $display_name = $_POST['display_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user_name = $_POST['user_name'];
+    // $profilePicture = $_POST['profile_picture'];
 
-//Code for Registration 
-if(isset($_POST['submit']))
-{
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $contact=$_POST['contact'];
-$sql=mysqli_query($con,"select id from users where email='$email'");
-$row=mysqli_num_rows($sql);
-if($row> 0) 
-{ 
-  echo "<script>alert('Email id already exist with another account. Please try with other email id');</script>"; 
-} else{ 
-  $msg=mysqli_query($con,"insert into users(fname,lname,email,password,contactno) values('$fname','$lname','$email','$password','$contact')"); 
-if($msg) { 
-  echo "<script>alert('Registered successfully');</script>"; 
-  echo "<script type='text/javascript'>document.location = 'login.php';</script>"; 
-} } } ?>
+    // upload image
+    $baseName = basename($_FILES['profile_picture']["name"]);
+    $targetFile =  time().$baseName;
+    $status = move_uploaded_file($_FILES['profile_picture']["tmp_name"], 
+    './users/user_images/'.$targetFile);
+
+    // Check if the email already exists
+    $stmt = $con->prepare("SELECT id FROM users WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row || $status) {
+      echo "<script>alert('Email id already exists with another account. Please try with another email id');</script>";
+    } else {
+      // Hash the password
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+      // Insert user data into the database
+      $stmt = $con->prepare("INSERT INTO users(display_name, email, password, user_name, profile_picture) 
+                            VALUES(:display_name, :email, :password, :user_name, :targetFile)");
+      $stmt->bindParam(':display_name', $display_name);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $hashedPassword);
+      $stmt->bindParam(':user_name', $user_name);
+      $stmt->bindParam(':profile_picture', $profilePicture);
+
+      $result = $stmt->execute();
+
+      $message = 'a problem occured in image uploading.';
+
+      if ($result) {
+        echo "<script>alert('Registered successfully');</script>";
+        echo "<script type='text/javascript'>document.location = 'login.php';</script>";
+      }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +62,7 @@ if($msg) {
     - favicon
   -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-  <title>User Signup | Registration and Login System</title>
+  <title>SCA Gene - Registration</title>
   <link href="./assets/css/login_register.css" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -81,23 +110,21 @@ if($msg) {
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Home</a>
+            <a href="./index.php" class="navbar-link title-md">Home</a>
           </li>
 
-          <!-- <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Doctors</a>
-          </li> -->
-
-          <!-- <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Services</a>
-          </li> -->
+         
 
           <li class="navbar-item">
-            <a href="./pages/articles.html" class="navbar-link title-md">Articles</a>
+            <a href="./pages/articles.php" class="navbar-link title-md">Articles</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link title-md">Contact</a>
+            <a href="./pages/gallery.php" class="navbar-link title-md">ACR/CCA Gallery</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="./pages/contact.php" class="navbar-link title-md">Contact</a>
           </li>
 
         </ul>
@@ -157,13 +184,15 @@ if($msg) {
       <h2 class="form-title text-center">Register</h2>
 
       <div>
-        <label for="fname">First Name</label>
-        <input type="text" name="fname" id="fname" placeholder="John" class="text-input" required>
+        <label for="fname">Full Name</label>
+        <input type="text" name="display_name" id="display_name" placeholder="John Doe" class="text-input" required>
       </div>
 
       <div>
-        <label for="lname">Last Name</label>
-        <input type="text" name="lname" id="lname" placeholder="Doe" class="text-input" required>
+        <label for="user_name">User name</label>
+        <input type="text" name="user_name" id="user_name" 
+        placeholder="john_Doe25" 
+        class="text-input" required>
       </div>
 
       <div>
@@ -172,13 +201,11 @@ if($msg) {
       </div>
 
       <div>
-        <label for="contact">Contact</label>
-        <input type="number" name="contact" id="contact" 
-        pattern="[0-9]{10}" 
-        title="10 numeric characters only"
-        placeholder="0099900045" 
-        class="text-input" required>
+        <label for="email">Profile Picture</label>
+        <input type="file" id="profile_picture" 
+                name="profile_picture" class="text-input" required>
       </div>
+
 
       <div>
         <label for="password">Password</label>
@@ -192,23 +219,42 @@ if($msg) {
 
       <div>
         <label for="confirmpassword">Confirm Password</label>
-        <input type="password" name="confirmpassword" 
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-          title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
-          placeholder="xxx-xxx-xxx" 
-          class="text-input" required>
+        <div class="password-container">
+          <input type="password" name="confirmpassword" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+            title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+            placeholder="xxx-xxx-xxx" 
+            class="text-input" required>
+          <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+            <ion-icon name="eye"></ion-icon>
+          </span>
+        </div>
+        
       </div>
 
       <div>
         <button type="submit" class="btn btn-big" name="submit" value="submit" aria-label="register">Register</button>
       </div>
-      <p class="text-center">Have an account? <a href="./login.html">Login</a></p>
+      <p class="text-center">Have an account? <a href="./login.php">Login</a></p>
 
     </form>
   </div>
 
 
-
+  <script>
+    
+    function togglePasswordVisibility(passwordFieldId) {
+    var passwordField = document.getElementById(passwordFieldId);
+    var icon = document.querySelector('.password-toggle ion-icon');
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.setAttribute('name', 'eye-off');
+    } else {
+      passwordField.type = "password";
+      icon.setAttribute('name', 'eye');
+    }
+  }
+</script>
 
    <!-- 
     - custom js link
@@ -221,6 +267,10 @@ if($msg) {
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+  
 </body>
 
 </html>
