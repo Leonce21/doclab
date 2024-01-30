@@ -1,20 +1,15 @@
 <?php
 // session_start();
 require_once('includes/config.php');
-$message = '';
+
 // Code for Registration
 if (isset($_POST['submit'])) {
     $display_name = $_POST['display_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user_name = $_POST['user_name'];
-    // $profilePicture = $_POST['profile_picture'];
+    $profilePicture = $_POST['profile_picture'];
 
-    // upload image
-    $baseName = basename($_FILES['profile_picture']["name"]);
-    $targetFile =  time().$baseName;
-    $status = move_uploaded_file($_FILES['profile_picture']["tmp_name"], 
-    './users/user_images/'.$targetFile);
 
     // Check if the email already exists
     $stmt = $con->prepare("SELECT id FROM users WHERE email = :email");
@@ -22,7 +17,7 @@ if (isset($_POST['submit'])) {
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($row || $status) {
+    if ($row) {
       echo "<script>alert('Email id already exists with another account. Please try with another email id');</script>";
     } else {
       // Hash the password
@@ -30,7 +25,7 @@ if (isset($_POST['submit'])) {
 
       // Insert user data into the database
       $stmt = $con->prepare("INSERT INTO users(display_name, email, password, user_name, profile_picture) 
-                            VALUES(:display_name, :email, :password, :user_name, :targetFile)");
+                            VALUES(:display_name, :email, :password, :user_name, :profile_picture)");
       $stmt->bindParam(':display_name', $display_name);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':password', $hashedPassword);
@@ -38,8 +33,6 @@ if (isset($_POST['submit'])) {
       $stmt->bindParam(':profile_picture', $profilePicture);
 
       $result = $stmt->execute();
-
-      $message = 'a problem occured in image uploading.';
 
       if ($result) {
         echo "<script>alert('Registered successfully');</script>";
