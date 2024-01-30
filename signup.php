@@ -8,7 +8,19 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user_name = $_POST['user_name'];
-    $profilePicture = $_POST['profile_picture'];
+
+    // Handle profile picture upload
+    $profilePicture = $_FILES['profile_picture'];
+    $profilePictureName = '';
+
+    // Check if a file is uploaded
+    if ($profilePicture['error'] == 0) {
+      // Generate a unique filename
+      $profilePictureName = 'users/user_images/' . uniqid() . '_' . $profilePicture['name'];
+
+      // Move the uploaded file to the user_images folder
+      move_uploaded_file($profilePicture['tmp_name'], $profilePictureName);
+    }
 
 
     // Check if the email already exists
@@ -30,7 +42,7 @@ if (isset($_POST['submit'])) {
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':password', $hashedPassword);
       $stmt->bindParam(':user_name', $user_name);
-      $stmt->bindParam(':profile_picture', $profilePicture);
+      $stmt->bindParam(':profile_picture', $profilePictureName);
 
       $result = $stmt->execute();
 
@@ -173,7 +185,7 @@ if (isset($_POST['submit'])) {
   -->
 
   <div class="auth-content">
-    <form name="signup" onsubmit="return checkpass();" method="post">
+    <form name="signup" onsubmit="return checkpass();" method="post" enctype="multipart/form-data">
       <h2 class="form-title text-center">Register</h2>
 
       <div>
@@ -196,29 +208,36 @@ if (isset($_POST['submit'])) {
       <div>
         <label for="email">Profile Picture</label>
         <input type="file" id="profile_picture" 
-                name="profile_picture" class="text-input" required>
+                name="profile_picture" class="text-input" accept="image/*" required>
       </div>
 
 
       <div>
         <label for="password">Password</label>
+        <div class="password-container">
         <input type="password" 
           name="password" id="password"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
           title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters" 
           placeholder="xxx-xxx-xxx" 
           class="text-input" required>
+          <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+            <ion-icon name="eye"></ion-icon>
+          </span>
+        </div>
+        
+          
       </div>
 
       <div>
         <label for="confirmpassword">Confirm Password</label>
         <div class="password-container">
-          <input type="password" name="confirmpassword" 
+          <input type="password" name="confirmpassword" id="confirmpassword"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             title="at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
             placeholder="xxx-xxx-xxx" 
             class="text-input" required>
-          <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+          <span class="password-toggle" onclick="togglePasswordVisibility('confirmpassword')">
             <ion-icon name="eye"></ion-icon>
           </span>
         </div>
