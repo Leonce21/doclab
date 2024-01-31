@@ -110,10 +110,8 @@ include './config/sidebar.php';?>
            <tr>
              <!-- <td class="px-2 py-1 align-middle text-center"><?php echo $serial;?></td> -->
              <td class="px-2 py-1 align-middle text-center">
-             <?php
-              $profilePicturePath = '/users/user_images/' . $_SESSION['profile_picture'];
-              ?>
-               <img class = "img-thumbnail rounded-circle p-0 border user-img" src="user_images/<?php echo $profilePicturePath;?>">
+           
+               <img class = "img-thumbnail rounded-circle p-0 border user-img" src="./user_images/<?php echo $_SESSION['profile_picture']?>">
              </td>
              
              <td class="px-2 py-1 align-middle"><?php echo $_SESSION['display_name'];?></td>

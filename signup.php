@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     // Check if a file is uploaded
     if ($profilePicture['error'] == 0) {
       // Generate a unique filename
-      $profilePictureName = 'users/user_images/' . uniqid() . '_' . $profilePicture['name'];
+      $profilePictureName = 'users/user_images/'  ;
 
       // Move the uploaded file to the user_images folder
       move_uploaded_file($profilePicture['tmp_name'], $profilePictureName);
