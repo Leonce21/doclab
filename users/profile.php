@@ -3,30 +3,24 @@ include './config/connection.php';
 
 $message = '';
 
-  //https://www.w3schools.com/php/php_file_upload.asp
-/**
-we will save the user picture in a separate folder.
-and in database we will store the picture name only.
 
-ON THE OTHER HAND
-mysql supports blob data for storing pictures, 
-but we are not going to use it. why?
-find reason?
-*/
+// Assuming you have a session variable for the logged-in user ID
+$loggedInUserId = $_SESSION['user_id']; 
 
-$queryUsers = "select `id`, `display_name`, `user_name`, 
-`profile_picture` from `users`;";
-$stmtUsers = '';
+$queryUser = "SELECT `id`, `display_name`, `user_name`, `profile_picture` FROM `users` WHERE `id` = :user_id;";
+$stmtUser = '';
 
 try {
-    $stmtUsers = $con->prepare($queryUsers);
-    $stmtUsers->execute();
+
+  $stmtUser = $con->prepare($queryUser);
+  $stmtUser->bindParam(':user_id', $loggedInUserId, PDO::PARAM_INT);
+  $stmtUser->execute();
 
 } catch(PDOException $ex) {
-      echo $ex->getTraceAsString();
-      echo $ex->getMessage();
-      exit;
-    }
+  echo $ex->getTraceAsString();
+  echo $ex->getMessage();
+  exit;
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,28 +96,26 @@ include './config/sidebar.php';?>
          </thead>
 
          <tbody>
-          <?php 
-          $serial = 0;
-          while($_SESSION= $stmtUsers->fetch(PDO::FETCH_ASSOC)) {
-           $serial++;
-           ?>
-           <tr>
-             <!-- <td class="px-2 py-1 align-middle text-center"><?php echo $serial;?></td> -->
-             <td class="px-2 py-1 align-middle text-center">
-           
-               <img class = "img-thumbnail rounded-circle p-0 border user-img" src="./user_images/<?php echo $_SESSION['profile_picture']?>">
-             </td>
-             
-             <td class="px-2 py-1 align-middle"><?php echo $_SESSION['display_name'];?></td>
-             <td class="px-2 py-1 align-middle"><?php echo$_SESSION['user_name'];?></td>
-
-             <td class="px-2 py-1 align-middle text-center">
-                <a href="update_user.php?user_id=<?php echo$_SESSION['id']; ?>" class="btn btn-primary btn-sm btn-flat">
-                  <i class="fa fa-edit"></i> 
-                </a>
-              </td>
-         </tr>
-       <?php } ?>
+          <?php
+          if ($user = $stmtUser->fetch(PDO::FETCH_ASSOC)) {
+              ?>
+              <tr>
+                  <td class="px-2 py-1 align-middle text-center">
+                      <img class="img-thumbnail rounded-circle p-0 border user-img" src="user_images/<?php echo $targetFile['profile_picture'];?>">
+                  </td>
+                  <td class="px-2 py-1 align-middle"><?php echo $user['display_name']; ?></td>
+                  <td class="px-2 py-1 align-middle"><?php echo $user['user_name']; ?></td>
+                  <td class="px-2 py-1 align-middle text-center">
+                      <a href="update_user.php?user_id=<?php echo $user['id']; ?>" class="btn btn-primary btn-sm btn-flat">
+                          <i class="fa fa-edit"></i>
+                      </a>
+                  </td>
+              </tr>
+              <?php
+          } else {
+              echo '<tr><td colspan="4" class="text-center">No profile found.</td></tr>';
+          }
+          ?>
      </tbody>
    </table>
  </div>

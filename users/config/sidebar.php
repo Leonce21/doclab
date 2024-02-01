@@ -6,7 +6,7 @@ if(!(isset($_SESSION['user_id']))) {
 ?>
 <aside class="main-sidebar sidebar-dark-primary bg-black elevation-1">
     <a href="./" class="brand-link logo-switch bg-black">
-      <h4 class="brand-image-xl logo-xs mb-0 text-center"><b>SCE Gene</b></h4>
+      <h4 class="brand-image-xl logo-xs mb-0 text-center"><b>SCA Gene</b></h4>
       
     </a>
 
@@ -15,9 +15,9 @@ if(!(isset($_SESSION['user_id']))) {
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          
+         
           <img 
-          src="/users/user_images/<?php echo $_SESSION['profile_picture']?>" class="img-circle elevation-2" alt="User Image" />
+          src="<?php echo $stmt['profile_picture']; ?>" class="img-circle elevation-2" alt="User Image" />
         </div>
         <div class="info">
           <p class="d-block"><?php echo $_SESSION['display_name'];?></p>

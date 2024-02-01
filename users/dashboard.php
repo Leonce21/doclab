@@ -1,26 +1,25 @@
 <?php 
 include './config/connection.php';
 
-  $date = date('Y-m-d');
+  $user_id = 1;
+// Modify the query to count login events for the specific user
+  $queryToday = "SELECT COUNT(*) as `today` 
+  FROM `login_events` 
+  WHERE `user_id` = '$user_id'
+    AND DATE(`login_time`) = CURDATE();";
 
-  $queryToday = "SELECT count(*) as `today` 
-  from `patient_visits` 
-  where `visit_date` = '$date';";
 
-
-
-  try {
-
-    $stmtToday = $con->prepare($queryToday);
-    $stmtToday->execute();
-    $r = $stmtToday->fetch(PDO::FETCH_ASSOC);
-    $todaysCount = $r['today'];
-
-  } catch(PDOException $ex) {
-     echo $ex->getMessage();
-   echo $ex->getTraceAsString();
-   exit;
-   }
+  
+try {
+  $stmtToday = $con->prepare($queryToday);
+  $stmtToday->execute();
+  $r = $stmtToday->fetch(PDO::FETCH_ASSOC);
+  $todaysCount = $r['today'];
+} catch (PDOException $ex) {
+  echo $ex->getMessage();
+  echo $ex->getTraceAsString();
+  exit;
+}
 
 ?>
 <!DOCTYPE html>

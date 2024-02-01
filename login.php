@@ -1,5 +1,18 @@
 <?php 
 	include 'includes/config.php';
+  // Function to display the profile picture
+  function displayProfilePicture($profilePictureName) {
+    // Check if the profile picture exists
+    $profilePicturePath = 'user_images/' . $profilePictureName;
+    if (file_exists($profilePicturePath)) {
+        // Display the profile picture
+        echo '<img class="img-thumbnail rounded-circle p-0 border user-img" src="' . $profilePicturePath . '" alt="Profile Picture">';
+    } else {
+        // Display a default profile picture or a placeholder image
+        echo '<img class="img-thumbnail rounded-circle p-0 border user-img" src="path_to_default_image/default_profile_picture.jpg" alt="Default Profile Picture">';
+    }
+  }
+  
   if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];

@@ -469,7 +469,7 @@
         
       </p>
 
-      <h2 class="section-title headline-md text-center" data-reveal="bottom">Circle Cells Association</h2>
+      <h2 class="section-title headline-md text-center" data-reveal="bottom">Sickle Cells Association</h2>
     </div>
     <div class="slider owl-carousel">
       
