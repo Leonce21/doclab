@@ -4,55 +4,87 @@ require_once('includes/config.php');
 
 // Code for Registration
 if (isset($_POST['submit'])) {
-    $display_name = $_POST['display_name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $user_name = $_POST['user_name'];
+  $display_name = $_POST['display_name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $user_name = $_POST['user_name'];
 
-    // Handle profile picture upload
-    $profilePicture = $_FILES['profile_picture'];
-    $profilePictureName = '';
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Check if a file is uploaded
-    if ($profilePicture['error'] == 0) {
-      // Generate a unique filename based on the current timestamp
-      $targetFile = time() . '_' . basename($profilePicture['name']);
-      $profilePictureName = 'users/user_images/' . $targetFile;
-    
-      // Move the uploaded file to the user_images folder
-      move_uploaded_file($profilePicture['tmp_name'], $profilePictureName);
+  // // Handle profile picture upload
+  // $profilePicture = $_FILES['profile_picture'];
+  // $profilePictureName = '';
+
+  // // Check if a file is uploaded
+  // if ($profilePicture['error'] == 0) {
+  //   // Generate a unique filename based on the current timestamp
+  //   $targetFile = time() . '_' . basename($profilePicture['name']);
+  //   $profilePictureName = 'users/user_images/'.$targetFile;
+  
+  //   // Move the uploaded file to the user_images folder
+  //   move_uploaded_file($profilePicture['tmp_name'], $profilePictureName);
+  // }
+
+  $baseName = basename($_FILES["profile_picture"]["name"]);
+  $targetFile = time() . $baseName;
+
+  $profilePictureName = move_uploaded_file($_FILES["profile_picture"]["tmp_name"], 'users/user_images/' . $targetFile);
+
+    try {
+      $con->beginTransaction();
+
+      $query = "INSERT INTO `users`(`display_name`, `email`, `user_name`, `password`, `profile_picture`) 
+                VALUES('$display_name', '$email', '$user_name', '$hashedPassword', '$targetFile')";
+
+      $stmtUser = $con->prepare($query);
+      // $stmtUser->bindParam(':display_name', $display_name);
+      // $stmtUser->bindParam(':email', $email);
+      // $stmtUser->bindParam(':user_name', $user_name);
+      // $stmtUser->bindParam(':hashedPassword', $hashedPassword);
+      // $stmtUser->bindParam(':profile_picture', $profilePictureName);
+      $result = $stmtUser->execute();
+
+      $con->commit();
+
+      $message = 'user registered successfully';
+
+    } catch (PDOException $ex) {
+      $con->rollback();
+      echo $ex->getTraceAsString();
+      echo $ex->getMessage();
+      exit;
     }
+    header("location:login.php");
+    exit;
 
+    // // Check if the email already exists
+    // $stmt = $con->prepare("SELECT id FROM users WHERE email = :email");
+    // $stmt->bindParam(':email', $email);
+    // $stmt->execute();
+    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // if ($row) {
+    //   echo "<script>alert('Email id already exists with another account. Please try with another email id');</script>";
+    // } else {
+    //   // Hash the password
+    //   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Check if the email already exists
-    $stmt = $con->prepare("SELECT id FROM users WHERE email = :email");
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    //   // Insert user data into the database
+    //   $stmt = $con->prepare("INSERT INTO users(display_name, email, password, user_name, profile_picture) 
+    //                         VALUES(:display_name, :email, :password, :user_name, :profile_picture)");
+    //   $stmt->bindParam(':display_name', $display_name);
+    //   $stmt->bindParam(':email', $email);
+    //   $stmt->bindParam(':password', $hashedPassword);
+    //   $stmt->bindParam(':user_name', $user_name);
+    //   $stmt->bindParam(':profile_picture', $profilePictureName);
 
-    if ($row) {
-      echo "<script>alert('Email id already exists with another account. Please try with another email id');</script>";
-    } else {
-      // Hash the password
-      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    //   $result = $stmt->execute();
 
-      // Insert user data into the database
-      $stmt = $con->prepare("INSERT INTO users(display_name, email, password, user_name, profile_picture) 
-                            VALUES(:display_name, :email, :password, :user_name, :profile_picture)");
-      $stmt->bindParam(':display_name', $display_name);
-      $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':password', $hashedPassword);
-      $stmt->bindParam(':user_name', $user_name);
-      $stmt->bindParam(':profile_picture', $profilePictureName);
-
-      $result = $stmt->execute();
-
-      if ($result) {
-        echo "<script>alert('Registered successfully');</script>";
-        echo "<script type='text/javascript'>document.location = 'login.php';</script>";
-      }
-    }
+      // if ($result) {
+      //   echo "<script>alert('Registered successfully');</script>";
+      //   echo "<script type='text/javascript'>document.location = 'login.php';</script>";
+      // }
+    // }
 }
 ?>
 
@@ -132,6 +164,10 @@ if (isset($_POST['submit'])) {
 
           <li class="navbar-item">
             <a href="./pages/contact.php" class="navbar-link title-md">Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="./login.php" class="title-md navbar-link">Login</a>
           </li>
 
         </ul>

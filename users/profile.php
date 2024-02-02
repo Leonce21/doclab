@@ -97,11 +97,13 @@ include './config/sidebar.php';?>
 
          <tbody>
           <?php
-          if ($user = $stmtUser->fetch(PDO::FETCH_ASSOC)) {
+           $serial = 0;
+           while($user = $stmtUser->fetch(PDO::FETCH_ASSOC)) {
+            $serial++;
               ?>
               <tr>
                   <td class="px-2 py-1 align-middle text-center">
-                      <img class="img-thumbnail rounded-circle p-0 border user-img" src="user_images/<?php echo $targetFile['profile_picture'];?>">
+                      <img class="img-thumbnail rounded-circle p-0 border user-img" src="user_images/<?php echo $user['profile_picture'];?>">
                   </td>
                   <td class="px-2 py-1 align-middle"><?php echo $user['display_name']; ?></td>
                   <td class="px-2 py-1 align-middle"><?php echo $user['user_name']; ?></td>
@@ -112,8 +114,6 @@ include './config/sidebar.php';?>
                   </td>
               </tr>
               <?php
-          } else {
-              echo '<tr><td colspan="4" class="text-center">No profile found.</td></tr>';
           }
           ?>
      </tbody>

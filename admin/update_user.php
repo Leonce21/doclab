@@ -27,7 +27,7 @@ $hiddenId = $_POST['hidden_id'];
  $profilePicture = basename($_FILES["profile_picture"]["name"]);
  $targetFile =  time(). $profilePicture;
  $status = move_uploaded_file($_FILES["profile_picture"]["tmp_name"],
-  'user_images/'.$targetFile);
+  '../users/user_images/'.$targetFile);
 
 
  $encryptedPassword = md5($password);

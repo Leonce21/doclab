@@ -65,7 +65,7 @@ try {
   echo $ex->getMessage();
   exit;
 }
-header("Location:congratulation.php?goto_page=users.php&message=$message");
+header("Location:congratulation.php?goto_page=profile.php&message=$message");
 }
 
 

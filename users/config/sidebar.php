@@ -15,9 +15,9 @@ if(!(isset($_SESSION['user_id']))) {
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-         
           <img 
-          src="<?php echo $stmt['profile_picture']; ?>" class="img-circle elevation-2" alt="User Image" />
+          src="user_images/<?php echo $_SESSION['profile_picture']; ?>" class="img-circle elevation-2" alt="User Image" />
+          
         </div>
         <div class="info">
           <p class="d-block"><?php echo $_SESSION['display_name'];?></p>

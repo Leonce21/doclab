@@ -30,7 +30,7 @@ if(isset($_POST['save_user'])) {
   //244574700_322087779604661_8207402889226768946_n
 
   $status = move_uploaded_file($_FILES["profile_picture"]["tmp_name"], 
-    'user_images/'.$targetFile);
+    '../users/user_images/'.$targetFile);
 
   if($status) {
     try {
@@ -223,7 +223,7 @@ include './config/sidebar.php';?>
            <tr>
              <td class="px-2 py-1 align-middle text-center"><?php echo $serial;?></td>
              <td class="px-2 py-1 align-middle text-center">
-               <img class = "img-thumbnail rounded-circle p-0 border user-img" src="user_images/<?php echo $row['profile_picture'];?>">
+               <img class = "img-thumbnail rounded-circle p-0 border user-img" src="../users/user_images/<?php echo $row['profile_picture'];?>">
              </td>
              
              <td class="px-2 py-1 align-middle"><?php echo $row['display_name'];?></td>
