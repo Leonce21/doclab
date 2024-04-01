@@ -17,13 +17,13 @@ if(isset($_POST['send'])){
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'bernardleonce59@gmail.com';
-    $mail->Password = 'fnybgvmlylumhczz';
+    $mail->Username = 'your email';
+    $mail->Password = 'google app password';
     $mail->Port = 465;
     $mail->SMTPSecure = 'ssl';
     $mail->isHTML(true);
     $mail->setFrom($email, $name);
-    $mail->addAddress('bernardleonce59@gmail.com');
+    $mail->addAddress('your email');
     $mail->Subject = ("$email ($subject)");
     $mail->Body = $message;
     $mail->send();
