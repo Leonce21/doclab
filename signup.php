@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
       echo $ex->getMessage();
       exit;
     }
-    header("location:login.php");
+    header("location:./login.php");
     exit;
 
     // // Check if the email already exists

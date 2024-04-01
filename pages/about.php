@@ -1,73 +1,64 @@
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require './PHPMailer/src/Exception.php';
-require './PHPMailer/src/PHPMailer.php';
-require './PHPMailer/src/SMTP.php';
-
-// Check if the form is submitted
-if(isset($_POST['send'])){
-    $name = htmlentities($_POST['name']);
-    $email = htmlentities($_POST['email']);
-    $subject = htmlentities($_POST['subject']);
-    $message = htmlentities($_POST['message']);
-
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'bernardleonce59@gmail.com';
-    $mail->Password = 'fnybgvmlylumhczz';
-    $mail->Port = 465;
-    $mail->SMTPSecure = 'ssl';
-    $mail->isHTML(true);
-    $mail->setFrom($email, $name);
-    $mail->addAddress('bernardleonce59@gmail.com');
-    $mail->Subject = ("$email ($subject)");
-    $mail->Body = $message;
-    $mail->send();
-
-    header("Location: ./contact.php?=email_sent!");
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Doclab - contact">
+    <meta name="title" content="Doclab - home">
     <meta name="description" content="This is a madical html template made by BTLeonce">
+  
     <link rel="shortcut icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/contact.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- 
+      - google font link
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>SCA Gene - Contact</title>
+      rel="stylesheet">
+  
+    <title>SCA Gene - About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 100;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+         
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
-<body id="top">
- <!-- 
+<body>
+       <!-- 
     - #PRELOADER
   -->
 
     <div class="preloader" data-preloader>
         <div class="circle"></div>
     </div>
-
     <!-- 
     - #HEADER
-    -->
+  -->
 
-<header class="header" data-header style="background: #252520;">
+    <header class="header" data-header style="background: #252520;">
 
     <div class="container">
 
@@ -95,8 +86,6 @@ if(isset($_POST['send'])){
                     <a href="../index.php" class="navbar-link title-md">Home</a>
                 </li>
 
-               
-
                 <li class="navbar-item">
                     <a href="./articles.php" class="navbar-link title-md">Articles</a>
                 </li>
@@ -104,18 +93,22 @@ if(isset($_POST['send'])){
                 <li class="navbar-item">
                     <a href="./gallery.php" class="navbar-link title-md">ACR/CCA Gallery</a>
                 </li>
+        
 
                 <li class="navbar-item">
                     <a href="./contact.php" class="navbar-link title-md">Contact</a>
                 </li>
+
                 <li class="navbar-item">
                     <a href="./about.php" class="navbar-link title-md">About</a>
                 </li>
-                <li class="navbar-item">
-            <a href="../login.php" class="title-md navbar-link">Login</a>
-          </li>
 
             </ul>
+             <ul class="social-list">
+        <li>
+            <a href="../login.php" class="navbar-link title-md">Login</a><br>
+        </li>
+    </ul>
 
             <ul class="social-list">
 
@@ -162,67 +155,27 @@ if(isset($_POST['send'])){
         <div class="overlay" data-nav-toggler data-overlay></div>
 
     </div>
-</header>
+    </header>
 
-    <!-- contact section start -->
-    <section class="contact" id="contact">
-        <div class="max-width">
-            <h2 class="title">Contact Us</h2>
-            <div class="contact-content">
-                <div class="column left">
-                    <div class="text">Get in Touch</div>
-                    <p>Ready to elevate your project? Let's bring your vision to life! Get in touch, and let's collaborate to create something extraordinary together. I'm just an email away – let's start making ideas happen.</p>
-                    <div class="icons">
-                        <div class="row">
-                            <i class="fas fa-user"></i>
-                            <div class="info">
-                                <div class="head">Name</div>
-                                <div class="sub-title">Circle Cells Association</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="info">
-                                <div class="head">Address</div>
-                                <div class="sub-title">Cameroon, Yaounde</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fas fa-envelope"></i>
-                            <div class="info">
-                                <div class="head">Email</div>
-                                <div class="sub-title">CCA237@gmail.com</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column right">
-                    <div class="text">Message me</div>
-                    <form method="POST">
-                        <!-- <input type="hidden" name="access_key" value="d1e9fc16-3156-4952-963c-89577d4c45ab"> -->
-                        <div class="fields">
-                            <div class="field name">
-                                <input type="text" placeholder="Name" name="name" id="name" required>
-                            </div>
-                            <div class="field email">
-                                <input type="email" placeholder="Email" name="email" id="email" required>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <input type="text" placeholder="Subject" name="subject" id="subject" required>
-                        </div>
-                        <div class="field textarea">
-                            <textarea cols="30" rows="10" name="message" id="message" placeholder="Message.." required></textarea>
-                        </div>
-                        <div class="">
-                            <button type="submit" name="send" class="btn has-before title-md">Send message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <div class="content">
+        <h1>About Sickle Cell Anemia</h1>
+        <p>
+            Sickle cell anemia is a genetic blood disorder characterized by abnormal hemoglobin. It affects red blood cells, causing them to become rigid and take on a crescent or "sickle" shape. These deformed cells can block blood flow, leading to pain, organ damage, and other complications.
+        </p>
+        <img src="https://example.com/sickle-cell-image1.jpg" alt="Sickle Cell Anemia Image 1">
+        <p>
+            Common symptoms include fatigue, pain crises, anemia, and susceptibility to infections. Sickle cell anemia primarily affects people of African, Mediterranean, Middle Eastern, and Indian descent.
+        </p>
+        <img src="https://example.com/sickle-cell-image2.jpg" alt="Sickle Cell Anemia Image 2">
+        <p>
+            Research and awareness are crucial for improving the lives of individuals with sickle cell anemia. Advances in treatment, including blood transfusions and hydroxyurea therapy, have helped manage the condition, but a cure remains elusive.
+        </p>
+        <img src="https://example.com/sickle-cell-image3.jpg" alt="Sickle Cell Anemia Image 3">
+        <p>
+            If you or someone you know has sickle cell anemia, seek medical advice and support. Together, we can raise awareness and promote better understanding of this challenging disease.
+        </p>
+    </div>
+    
     <!-- 
     - #FOOTER
   -->
@@ -249,13 +202,11 @@ if(isset($_POST['send'])){
 
                         <div>
                             <p>
-                                Main Email : <a href="mailto:contact@website.com"
-                                    class="contact-link">contact@&shy;website.com</a>
+                                Main Email : <a href="gnkongne@yahoo.fr"
+                                    class="contact-link">gnkongne@yahoo.fr</a>
                             </p>
 
-                            <p>
-                                Inquiries : <a href="mailto:Info@mail.com" class="contact-link">Info@mail.com</a>
-                            </p>
+                           
                         </div>
 
                     </li>
@@ -268,12 +219,12 @@ if(isset($_POST['send'])){
 
                         <div>
                             <p>
-                                Office Telephone : <a href="tel:0029129102320"
-                                    class="contact-link">0029129102320</a>
+                                Office Telephone : <a href="tel:(0039) 375 729 2665"
+                                    class="contact-link">(0039) 375 729 2665</a>
                             </p>
 
                             <p>
-                                Mobile : <a href="tel:000232439493" class="contact-link">000 2324 39493</a>
+                                Mobile : <a href="tel:+237673004114" class="contact-link">+237673004114</a>
                             </p>
                         </div>
 
@@ -332,11 +283,11 @@ if(isset($_POST['send'])){
                 </li>
 
                 <li>
-                    <a href="/pages/Faqs.php" class="text footer-link">FAQS</a>
+                    <a href="./Faqs.php" class="text footer-link">FAQS</a>
                 </li>
 
                 <li>
-                    <a href="#" class="text footer-link">Circle Cells Association gallery</a>
+                    <a href="" class="text footer-link">Circle Cells Association gallery</a>
                 </li>
 
             </ul>
@@ -404,16 +355,6 @@ if(isset($_POST['send'])){
     </div>
 </footer>
 
-
-
-<!-- 
-- #BACK TO TOP
--->
-
-<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="chevron-up"></ion-icon>
-</a>
-
 <!-- 
 - custom js link
 -->
@@ -425,7 +366,5 @@ if(isset($_POST['send'])){
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    
 </body>
-
 </html>

@@ -52,10 +52,6 @@
     <div class="circle"></div>
   </div>
 
-
-
-
-
   <!-- 
     - #HEADER
   -->
@@ -172,8 +168,9 @@
             <p class="hero-subtitle has-before" data-reveal="left">Welcome To SCA Gene</p>
 
             <h1 class="headline-lg hero-title" data-reveal="left">
-              Our Sickle Cell Awareness<br>
-              Journey
+            Empowering Lives,
+<br>
+One Cell at a Time
             </h1>
 
             <!-- <div class="hero-card" data-reveal="left">
@@ -203,7 +200,7 @@
           </div>
 
           <figure class="hero-banner" data-reveal="right">
-            <img src="./assets/images/hero-banner.png" width="590" height="517" loading="eager" alt="hero banner"
+            <img src="./assets/images/R.png" width="590" height="517" loading="eager" alt="hero banner"
               class="w-100">
           </figure>
 

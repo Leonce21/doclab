@@ -76,6 +76,9 @@
                     <li class="navbar-item">
                         <a href="./contact.php" class="navbar-link title-md">Contact</a>
                     </li>
+                    <li class="navbar-item">
+                    <a href="./about.php" class="navbar-link title-md">About</a>
+                </li>
 
                     <li class="navbar-item">
             <a href="../login.php" class="title-md navbar-link">Login</a>
